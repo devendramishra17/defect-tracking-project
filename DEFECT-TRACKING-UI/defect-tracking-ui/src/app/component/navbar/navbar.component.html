@@ -1,0 +1,23 @@
+<mat-toolbar style="background-color:lightcoral">
+ <span> Defect Tracking System</span>
+ <span class="loginbutton"></span>
+ <a  *ngIf="!loggedIn" routerLink="login" mat-icon-button  >Login</a>
+ 
+ <a  *ngIf="loggedIn"  mat-icon-button [ngStyle]=" {'color':'white'}"  [matMenuTriggerFor]="menu" > <mat-icon>account_circle</mat-icon></a>&nbsp;&nbsp;&nbsp;
+
+</mat-toolbar>
+
+  <mat-menu #menu="matMenu">
+    <label mat-menu-item>
+      <span>{{this.userloogedin}}</span>
+    </label>
+    <label mat-menu-item >
+      <span>{{role}}</span>
+    </label>
+    <button mat-menu-item *ngIf="loggedIn" 
+      
+     (click)="logout()" > Logout
+     
+    </button>
+  </mat-menu>
+  

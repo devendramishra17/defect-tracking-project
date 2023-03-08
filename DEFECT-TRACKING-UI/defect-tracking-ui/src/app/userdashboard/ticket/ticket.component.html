@@ -1,0 +1,95 @@
+<div class="bootstrap-wrapper">
+    
+     <div  class="container"> 
+        <button class="buttons" mat-raised-button (click)="open(content)">Add Ticket</button>
+         <h4 class="projectName" >Project Name :   {{CurrentProjects.projectName}}</h4>  
+        </div>  
+
+</div>
+
+
+<div class="aggridCss" >    
+  <table id="dynamic-table" class="table table-stripedtable-hover tableagcss" >    
+    <ag-grid-angular style="width:100%; height:85%;" 
+    class="ag-theme-balham" [columnDefs]="ColumnDefs"    
+     [animateRows]="true" [pagination]="true" 
+      [paginationPageSize]="10" [floatingFilter]="true" 
+      [rowData]="RowData|async" (gridReady)="onGridReady($event)" 
+      [editType]="editType"
+      [singleClickEdit]="true"
+      (rowValueChanged)="onRowValueChanged($event)"  
+      [stopEditingWhenCellsLoseFocus]="true"
+      suppressClickEdit
+      [frameworkComponents]="frameworkcomponent"
+      [immutableColumns] = "true"
+      [animateRows]="true" >    
+    </ag-grid-angular>    
+  </table>    
+</div>
+
+  <ng-template #content let-modal >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Ticket</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <mat-card class="my-card">
+        <mat-card-content>
+           <form class="my-form"   #f="ngForm">
+           
+              <mat-form-field class="full-width">
+                     <mat-label>Ticket Name</mat-label>
+                     <input  matInput    [(ngModel)]="ticket.ticketname " maxlength="50" (ngModelChange)="TicketNameUnique($event)" name="ticketname"  required>
+                  </mat-form-field>
+                  <div style="margin: top 0% ;">          
+                    <span *ngIf="this.ticketname"  style="color:red ;">Ticket name already exist</span>
+                 </div>
+                  <mat-form-field class="full-width">
+                    <mat-label>Description</mat-label>
+                    <input  matInput [(ngModel)]="ticket.description " maxlength="150"  name="description"  required>
+                 </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Project</mat-label>
+                    <mat-select [(ngModel)]="ticket.project" name="food" required>
+                      <mat-option  [value]="CurrentProjects">
+                        {{CurrentProjects.projectName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Assign To</mat-label>
+                    <mat-select [(ngModel)]="ticket.assigntoid" name="food" required>
+                      <mat-option *ngFor="let user of user" [value]="user">
+                        {{user.firstname+" "+user.lastname}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Status</mat-label>
+                    <mat-select [(ngModel)]="ticket.statusid_fk" name="food" required>
+                      <mat-option  [value]="statusOfNewTicket">
+                           Open
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                 
+                  
+          
+           </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" [disabled]="f.invalid || !ticket.project || !ticket.assigntoid || !ticket.statusid_fk|| this.ticketname"  (click)="createTicket(f)" color="primary">ADD TICKET</button>
+        </mat-card-actions>
+     </mat-card>
+
+    </div>
+    
+</ng-template>
+
+<router-outlet></router-outlet>

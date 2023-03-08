@@ -1,0 +1,60 @@
+<button class="buttons"mat-stroked-button color="accent"   (click)="open(content)">Add Project</button>
+
+<div class="aggridCss">    
+  <table id="dynamic-table" class="table table-stripedtable-hover tableagcss" >    
+    <ag-grid-angular style="width:100%; height:85%;" 
+    class="ag-theme-balham" [columnDefs]="ColumnDefs"    
+     [animateRows]="true" [pagination]="true" 
+      [paginationPageSize]="10" [floatingFilter]="true"
+       
+      [frameworkComponents]="frameworkcomponent"
+        [rowData]="RowData|async" (gridReady)="onGridReady($event)" 
+        [editType]="editType"
+        (cellValueChanged)="onCellValueChanged($event)"
+        (rowValueChanged)="onRowValueChanged($event)"
+        suppressClickEdit
+        [immutableColumns] = "true"
+
+    
+      [animateRows]="true" >    
+    </ag-grid-angular>    
+  </table>    
+</div>
+
+
+
+<ng-template #content let-modal>
+   <div class="modal-header">
+     <h4 class="modal-title" id="modal-basic-title">New Project</h4>
+     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+   <div class="modal-body">
+     <mat-card class="my-card">
+       <mat-card-content>
+          <form class="my-form"   #f="ngForm">
+          
+             <mat-form-field class="full-width">
+                    <mat-label>Project Name</mat-label>
+                    <input  matInput  (ngModelChange)="projectNameChange($event)" maxlength="50"  [(ngModel)]="newproject.projectName" name="projectName"   required>
+                 </mat-form-field>
+                 <div style="margin: top 0% ;">          
+                  <span *ngIf="this.projectnamePresent"  style="color:red ;">Project name already exist</span>
+               </div>
+                 <mat-form-field class="full-width">
+                   <mat-label>Project Description</mat-label>
+                   <textarea type=""  matInput [(ngModel)]="newproject.description" maxlength="150"  name="description"  required></textarea>
+                </mat-form-field>
+
+         
+          </form>
+       </mat-card-content>
+       <mat-card-actions>
+         <button mat-raised-button type="submit" [disabled]="f.invalid"  (click)="register(f)" color="primary">Add Project</button>
+       </mat-card-actions>
+    </mat-card>
+
+   </div>
+ </ng-template>
+ <router-outlet></router-outlet>

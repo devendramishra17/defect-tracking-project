@@ -1,0 +1,19 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <h1>Welcome QA Developer</h1>
+     <div class="container"> 
+
+        <!-- <mat-tab-group mat-align-tabs="end">
+            <mat-tab label="QA"></mat-tab>
+            <mat-tab label="Developer"></mat-tab>
+          </mat-tab-group> -->
+
+           <button class="buttons"  mat-raised-button [value]="Selectrole[1]" (click)="setUser($event)"  >QA</button>
+           <button class="buttons" mat-raised-button [value]="Selectrole[0]" (click)="setUser($event)" >Developer</button>
+                  
+        </div>
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>

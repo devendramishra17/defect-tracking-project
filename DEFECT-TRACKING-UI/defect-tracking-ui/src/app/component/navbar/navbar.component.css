@@ -1,0 +1,7 @@
+.loginbutton{
+    flex: 1 1 auto ;
+}
+#myModal {
+    bottom: 50%;
+    left: 70%;
+  }

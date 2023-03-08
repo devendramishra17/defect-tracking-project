@@ -1,0 +1,28 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+      
+     <div class="container"> 
+           <button  class="buttons" mat-raised-button routerLink="userlist" >Users</button>
+           <button class="buttons" mat-raised-button routerLink="project">Project</button>
+                   </div>
+
+           
+
+    </div>
+</div>
+<!-- <div class="aggridCss">    
+    <table id="dynamic-table" class="table table-stripedtable-hover tableagcss" >    
+      <ag-grid-angular style="width:100%; height:85%;" 
+      class="ag-theme-balham" [columnDefs]="ColumnDefs"    
+       [animateRows]="true" [pagination]="true" 
+        [paginationPageSize]="10" [floatingFilter]="true" 
+        [rowData]="RowData|async" (gridReady)="onGridReady($event)" 
+        [animateRows]="true" >    
+      </ag-grid-angular>    
+    </table>    
+  </div> -->
+
+
+
+
+<router-outlet></router-outlet>

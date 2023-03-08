@@ -1,0 +1,8 @@
+FROM angular:v2
+RUN mkdir DEFECT-TRACKING-UI
+
+COPY ./Initial.sh DEFECT-TRACKING-UI/
+COPY defect-tracking-ui DEFECT-TRACKING-UI
+EXPOSE 4200
+CMD ["sh","DEFECT-TRACKING-UI/Initial.sh"]
+

@@ -1,0 +1,26 @@
+<div class="bootstrap-wrapper">
+<div class="container mt">
+   <div class="row">
+     <div class="col-md-6 offset-md-3  text-center">
+         <img src="/assets/imgpass.png"  style="width: 80px" class="img-fluid" alt="">
+         <h1>Login!!</h1>
+          <form (ngSubmit)="onSubmit()">
+              <mat-form-field class="full-width" appearance="outline"> 
+                <mat-label>Username</mat-label>
+                <input required  [(ngModel)]="uname"  name="username" type="text" matInput/>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="outline"> 
+                <mat-label>Password</mat-label>
+                <input required [(ngModel)]="pass" name="password" type="password" matInput/>
+              </mat-form-field>
+              <div class="container text-center">
+                  <button type="reset"  mat-raised-button color="primary">Reset</button>
+                  <button type="submit" style="margin-left: 10px;" mat-raised-button color="accent">Login</button>
+              </div>
+          </form>
+          <span *ngIf="usernotpresent" style="color:red" >Username or Password is invalid</span>
+     </div>
+
+   </div>
+</div>
+</div>

@@ -1,0 +1,2 @@
+cd DEFECT-TRACKING-UI/
+ng serve

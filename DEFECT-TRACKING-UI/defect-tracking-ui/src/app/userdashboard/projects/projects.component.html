@@ -1,0 +1,14 @@
+
+<div class="aggridCss " style="margin-top: 60px;">    
+    <table id="dynamic-table" class="table table-stripedtable-hover tableagcss" >    
+      <ag-grid-angular style="width:100%; height:85%;" 
+      class="ag-theme-balham" [columnDefs]="ColumnDefs"    
+       [animateRows]="true" [pagination]="true" 
+        [paginationPageSize]="10" [floatingFilter]="true" 
+        [rowData]="RowData|async" (gridReady)="onGridReady($event)" 
+        (rowClicked)="onRowClicked($event)"
+        [animateRows]="true" >    
+      </ag-grid-angular>    
+    </table>    
+  </div>
+  
